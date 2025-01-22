@@ -1,24 +1,17 @@
 import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '../vite.svg'
 import { setupCounter } from './counter.ts'
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
+      <header class="">
+        <nav class="flex justify-between items-center p-4">
+          <h3 class="text-4xl cursor-pointer">WatchList</h3>
+  
+          <ul class="flex justify-between gap-2">
+            <li class="cursor-pointer">Minhas listas</li>
+            <li class="cursor-pointer">Filmes avaliados</li>
+          </ul>
+        </nav>
+      </header> 
 `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
