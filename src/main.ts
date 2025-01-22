@@ -1,17 +1,8 @@
-import './style.css'
-import { setupCounter } from './counter.ts'
+import "./style.css"
+import Header from "./header.ts"
+
+document.querySelector<HTMLDivElement>("body")!.className = "bg-neutral-800 h-screen"
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-      <header class="">
-        <nav class="flex justify-between items-center p-4">
-          <h3 class="text-4xl cursor-pointer">WatchList</h3>
-  
-          <ul class="flex justify-between gap-2">
-            <li class="cursor-pointer">Minhas listas</li>
-            <li class="cursor-pointer">Filmes avaliados</li>
-          </ul>
-        </nav>
-      </header> 
+${Header()}
 `
-
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
