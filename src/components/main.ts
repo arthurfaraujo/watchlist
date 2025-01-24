@@ -1,4 +1,4 @@
-import "./style.css"
+import "../style.css"
 import Header from "./header.ts"
 
 document.querySelector<HTMLDivElement>("body")!.className = "bg-neutral-900"
