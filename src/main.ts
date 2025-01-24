@@ -1,5 +1,5 @@
-import "../style.css"
-import Header from "./header.ts"
+import "./style.css"
+import Header from "./home-page/components/header"
 
 document.querySelector<HTMLDivElement>("body")!.className = "bg-neutral-900"
 document.querySelector<HTMLDivElement>("#app")!.className = "h-[3281px] w-full flex flex-col items-center"
