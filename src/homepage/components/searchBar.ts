@@ -1,9 +1,9 @@
 export default function SearchBar() {
     return `
-<form class="max-w-md mx-auto">
+<form class="w-1/2 sm:mx-4 mx-2">
     <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
     <div class="relative">
-        <input type="search" id="default-search" class="block w-full p-3 pr-8 text-sm rounded-lg bg-neutral-700 border border-neutral-700 placeholder-neutral-400 text-white outline-none focus:border-neutral-600" placeholder="Pesquise por filmes/series..." required />
+        <input type="search" id="default-search" class="block w-full p-2 pr-8 text-xs rounded-lg bg-neutral-700 border border-neutral-700 placeholder-neutral-400 text-white outline-none focus:border-neutral-600" placeholder="Pesquise por filmes/series..." required />
         
         <div class="absolute inset-y-0 end-0 flex items-center pe-3 cursor-pointer">
             <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

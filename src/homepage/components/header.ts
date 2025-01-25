@@ -3,14 +3,14 @@ import SearchBar from "./searchBar"
 export default function Header() {
     return `
 <nav class="bg-neutral-800 w-full">
-  <div class="w-4/6 mx-auto text-neutral-100 flex justify-between items-center p-2 ">
-    <p class="font-bold text-2xl cursor-pointer">WatchList</p>
+  <div class="max-w-screen-xl xl:mx-auto mx-4 text-neutral-100 flex justify-between items-center p-2 ">
+    <h1 class="hidden sm:block font-bold text-xl cursor-pointer">WatchList</h1>
     ${SearchBar()}
-    <ul class="font-semibold flex justify-between items-center gap-8">
-        <li class="cursor-pointer">Minhas listas</li>
-        <li class="w-10 h-10 border rounded-full cursor-pointer"></liv>
+    <ul class="text-sm font-semibold flex justify-between items-center">
+        <li class="cursor-pointer whitespace-nowrap">Minhas listas</li>
+        <li class="ml-4 w-10 h-10 border rounded-full cursor-pointer"></liv>
     </ul>
   </div>
 </nav>
-    `
+    `;
 } 
