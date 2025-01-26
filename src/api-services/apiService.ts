@@ -44,6 +44,10 @@ class ApiService {
     return this.request("trending/tv/week");
   }
 
+  async getMoviesByCategory(category: string) {
+    return this.request(`discover/movie`, { with_genres: category });
+}
+
   private readonly apiKey = import.meta.env.VITE_TMDB_API_KEY;
   private readonly baseUrl = "https://api.themoviedb.org/3/";
 

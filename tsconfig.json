@@ -3,6 +3,10 @@
     "target": "ES2020",
     "useDefineForClassFields": true,
     "module": "ESNext",
+    "baseUrl": "./src", // Define a pasta raiz padrão
+    "paths": {
+      "@/*": ["./*"] // Define o alias @ para a pasta src
+    },
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
 
@@ -20,5 +24,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src", "vite.config.ts"]
 }
