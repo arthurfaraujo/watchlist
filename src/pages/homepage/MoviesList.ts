@@ -1,5 +1,5 @@
-import ApiService from "../../api-services/apiService";
-import MovieCard from "../../api-services/moviesCards";
+import ApiService from "@/api-services/apiService";
+import MovieCard from "@/api-services/MovieCard";
 
 function formatTitle(title: string) {
     return title.length > 40 ? title.slice(0, 40) + "..." : title;
@@ -63,7 +63,7 @@ async function createCarousel(titulo: string, apiFunction: () => Promise<any>) {
 }
 
 
-export async function moviesList() {
+export default async function moviesList() {
     const container = document.createElement("div");
     container.className = "max-w-screen-xl xl:mx-auto mx-4 flex flex-wrap justify-center";
 
