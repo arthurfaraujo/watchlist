@@ -45,7 +45,11 @@ class ApiService {
   }
 
   async getMoviesByCategory(category: string) {
-    return this.request(`discover/movie`, { with_genres: category });
+    return this.request("discover/movie", { with_genres: category });
+  }
+  
+  async getTvByCategory(category: string) {
+    return this.request("discover/tv", { with_genres: category });
 }
 
   private readonly apiKey = import.meta.env.VITE_TMDB_API_KEY;
