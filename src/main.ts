@@ -13,13 +13,13 @@ ${Header()}
 `
 
 interface Routes {
-  '/': typeof MoviesList
-  '/mywatchlists': typeof MyWatchlist
+  '/watchlist': typeof MoviesList,
+  '/watchlist/mywatchlists': typeof MyWatchlist
 }
 
 const routes: Routes = {
-  '/': MoviesList,
-  '/mywatchlists': MyWatchlist
+  '/watchlist': MoviesList,
+  '/watchlist/mywatchlists': MyWatchlist
 }
 
 const render = (path: string) => {
