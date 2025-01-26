@@ -1,7 +1,7 @@
 import '@/style.css'
-import Header from '@/components/header'
+import Header from '@/components/Header'
 import MoviesList from '@/pages/homepage/MoviesList'
-import MyWatchlist from '@/pages/my_watchlist/MyWatchlist'
+import MyWatchlist from '@/pages/my_watchlist/MyWatchlists'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 document.querySelector<HTMLDivElement>('body')!.className = 'bg-neutral-900 min-h-screen'
