@@ -3,7 +3,6 @@ import Header from "./homepage/components/header"
 import { moviesList } from "./homepage/components/moviesList"
 
 document.querySelector<HTMLDivElement>("body")!.className = "bg-neutral-900"
-document.querySelector<HTMLDivElement>("#app")!.className = "w-full flex flex-col items-center"
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 ${Header()}
