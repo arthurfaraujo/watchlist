@@ -1,6 +1,11 @@
 import ApiService from "./apiService";
 
-// function format
+
+export enum MediaType {
+  filme = "movie",
+  serie = "tv",
+}
+
 
 export default async function MovieCard(titleId: string, mediaType: string) {
     const apiService = new ApiService();
@@ -11,7 +16,7 @@ export default async function MovieCard(titleId: string, mediaType: string) {
             : await apiService.getTvShowById(titleId);
         
         const name = mediaType === "movie" ? title.title : title.name;
-        const releaseDate = new Date(mediaType === "movie" ? title.release_date : title.first_air_date).toLocaleDateString("pt-BR");
+        const releaseDate = new Date(mediaType === MediaType.filme ? title.release_date : title.first_air_date).toLocaleDateString("pt-BR");
         const movieCard = document.createElement("div");
         movieCard.className = "fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50";
         movieCard.innerHTML = `
@@ -23,7 +28,7 @@ export default async function MovieCard(titleId: string, mediaType: string) {
                   title.poster_path
                 }" alt="${name}" class="w-72 rounded-md" />
                 <div class="flex flex-col">
-                    <h2 class="text-2xl font-bold mb-2">${name}</h2>
+                    <h2 class="text-2xl font-bold mb-2 pe-6">${name}</h2>
                     <p class="text-sm">${title.overview}</p>
                     <p class="text-sm mt-4 font-semibold">Release Date: <span class="font-normal">${releaseDate}</span></p>
                     <p class="text-sm font-semibold">Rating: <span class="font-normal">${Number(
