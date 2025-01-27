@@ -1,9 +1,8 @@
 import ApiService from "@/api-services/apiService";
-import MovieCard from "@/api-services/MovieCard";
-import { MediaType } from "@/api-services/MovieCard";
+import MovieCard, { MediaType } from "@/api-services/MovieCard";
 
-function formatTitle(title: string) {
-  return title.length > 35 ? title.slice(0, 35) + "..." : title;
+export function formatTitle(title: string, maxLength = 35) {
+  return title.length > maxLength ? title.slice(0, maxLength) + "..." : title;
 }
 
 async function createCarousel(
@@ -14,7 +13,7 @@ async function createCarousel(
   const containerWrapper = document.createElement("div");
   containerWrapper.className = "w-full overflow-hidden p-4 relative";
 
-  containerWrapper.innerHTML = `<h2 class="text-lg font-bold  pt-4 border-b border-neutral-700">${titulo}</h2>`;
+  containerWrapper.innerHTML = `<h2 class="text-lg font-bold  pt-4 border-b border-b-[#313232]">${titulo}</h2>`;
 
   const moviesContainer = document.createElement("div");
   moviesContainer.className = "carrossel flex overflow-hidden space-x-4 p-4";
@@ -51,12 +50,13 @@ async function createCarousel(
   try {
     const response = await apiFunction.call(apiService);
     response.results.forEach((title: any) => {
+      console.log(title.id, title.poster_path);
       const name = formatTitle(
         media_type === MediaType.filme ? title.title : title.name
       );
       const movieCard = document.createElement("div");
       movieCard.className =
-        "h-[440px] w-56 justify-between items-center border border-1 border-neutral-700 flex-shrink-0 bg-neutral-800 text-neutral-100 p-2 rounded-md cursor-pointer flex flex-col";
+        "h-[440px] w-56 justify-between items-center border border-1 border-[#303232] flex-shrink-0 bg-neutral-800 text-neutral-100 p-2 rounded-md cursor-pointer flex flex-col";
       movieCard.innerHTML = `
                 <div class="">
                     <img src="https://image.tmdb.org/t/p/w500${title.poster_path}" alt="${name}" class="h-80 object-cover rounded-md" id="movie-img">
