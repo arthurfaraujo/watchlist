@@ -11,11 +11,11 @@ export default async function MovieCard(titleId: string, mediaType: string) {
     const apiService = new ApiService();
     try {
         const title =
-          mediaType === "movie"
+          mediaType === MediaType.filme
             ? await apiService.getMovieById(titleId)
             : await apiService.getTvShowById(titleId);
         
-        const name = mediaType === "movie" ? title.title : title.name;
+        const name = mediaType === MediaType.filme ? title.title : title.name;
         const releaseDate = new Date(mediaType === MediaType.filme ? title.release_date : title.first_air_date).toLocaleDateString("pt-BR");
         const movieCard = document.createElement("div");
         movieCard.className = "fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50";
