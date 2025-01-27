@@ -4,7 +4,7 @@ export default async function MyWatchlists() {
   const watchlists = JSON.parse(localStorage.getItem('watchlists') ?? '[]').watchlists
 
   const container = document.createElement('div')
-  container.className = 'w-4/6 flex flex-wrap flex-grow p-4 gap-6'
+  container.className = 'max-w-screen-xl mx-auto flex flex-wrap flex-grow px-2 py-4 gap-6'
   container.innerHTML = `<h2 class="text-2xl font-bold w-full">Minhas Listas de Filmes</h2>`
 
   const moviesContainer = document.createElement('div')

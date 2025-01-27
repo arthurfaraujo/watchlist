@@ -1,16 +1,11 @@
 import '@/style.css'
-import Header from '@/components/Header'
+import Header from '@/components/header'
 import MoviesList from '@/pages/homepage/MoviesList'
 import MyWatchlist from '@/pages/my_watchlist/MyWatchlists'
 
 const app = document.querySelector<HTMLDivElement>('#app')
 document.querySelector<HTMLDivElement>('body')!.className = 'bg-neutral-900 min-h-screen'
 
-app!.className = 'w-full flex flex-col items-center flex-1 flex-grow'
-
-app!.innerHTML = `
-${Header()}
-`
 
 interface Routes {
   '/': typeof MoviesList
