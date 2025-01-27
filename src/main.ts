@@ -1,5 +1,5 @@
 import '@/style.css'
-import Header from '@/components/Header'
+import Header from '@/components/header'
 import MoviesList from '@/pages/homepage/MoviesList'
 import MyWatchlist from '@/pages/my_watchlist/MyWatchlists'
 
