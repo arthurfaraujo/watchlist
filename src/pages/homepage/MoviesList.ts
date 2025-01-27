@@ -50,7 +50,6 @@ async function createCarousel(
   try {
     const response = await apiFunction.call(apiService);
     response.results.forEach((title: any) => {
-      console.log(title.id, title.poster_path);
       const name = formatTitle(
         media_type === MediaType.filme ? title.title : title.name
       );
