@@ -114,8 +114,9 @@ function showSearchResults(results: Result[]){
 
         const mediaHTML = document.createElement("div")
         mediaHTML.className = "cursor-pointer flex gap-2";
+        const image = item.poster_path ? "https://image.tmdb.org/t/p/w500"  + item.poster_path : "/src/assets/placeholder.png";
         mediaHTML.innerHTML = `
-            <img class="rounded h-16" src="https://image.tmdb.org/t/p/w500${item.poster_path}">
+            <img class="rounded h-16 w-12 object-cover" src="${image}">
             <p class="text-sm">${item.media_type === MediaType.filme ? item.title : item.name}</p>
             <p class="text-xs ml-auto">${releaseDate}</p>
         `
@@ -128,7 +129,6 @@ function showSearchResults(results: Result[]){
     
     const resultsHTML = results
     .map(item => {
-        console.log(item)
         if (item.popularity < 0.1) return;
         
         if (item.media_type === MediaType.pessoa) {
