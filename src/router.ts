@@ -1,22 +1,19 @@
 import Header from '@/components/Header'
 import MoviesList from '@/pages/homepage/MoviesList'
-import MyWatchlist from '@/pages/my_watchlist/MyWatchlists'
+import MyWatchlists from '@/pages/mywatchlists/MyWatchlists'
+import MyWatchlist from '@/pages/mywatchlist/[id]/MyWatchlist'
 import { app } from '@/main'
 
 interface Routes {
   '/': typeof MoviesList
   '/mywatchlists': typeof MyWatchlist
-  '/mywatchlists/:id': (params: string[]) => Promise<HTMLDivElement>
+  '/mywatchlist/:id': typeof MyWatchlist
 }
 
 const routes: Routes = {
   '/': MoviesList,
-  '/mywatchlists': MyWatchlist,
-  '/mywatchlists/:id': async function (params: string[]) {
-    const div = document.createElement('div')
-    div.innerHTML = `My watchlist with ID: ${params[0]}`
-    return div
-  }
+  '/mywatchlists': MyWatchlists,
+  '/mywatchlist/:id': MyWatchlist
 }
 
 export function render(path: string) {
