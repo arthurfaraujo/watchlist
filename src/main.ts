@@ -18,7 +18,7 @@ const routes: Routes = {
 }
 
 const render = (path: string) => {
-  app!.innerHTML = Header()
+  app!.appendChild(Header())
 
   if (path in routes) {
     routes[path as keyof Routes]().then(page => app!.appendChild(page))
