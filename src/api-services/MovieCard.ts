@@ -2,8 +2,8 @@ import ApiService from "./apiService";
 
 
 export enum MediaType {
-  filme = "movie",
-  serie = "tv",
+  movie = "movie",
+  series = "tv",
 }
 
 
@@ -11,12 +11,12 @@ export default async function MovieCard(titleId: string, mediaType: string) {
     const apiService = new ApiService();
     try {
         const title =
-          mediaType === MediaType.filme
+          mediaType === MediaType.movie
             ? await apiService.getMovieById(titleId)
             : await apiService.getTvShowById(titleId);
         
-        const name = mediaType === MediaType.filme ? title.title : title.name;
-        const releaseDate = new Date(mediaType === MediaType.filme ? title.release_date : title.first_air_date).toLocaleDateString("pt-BR");
+        const name = mediaType === MediaType.movie ? title.title : title.name;
+        const releaseDate = new Date(mediaType === MediaType.movie ? title.release_date : title.first_air_date).toLocaleDateString("pt-BR");
         const movieCard = document.createElement("div");
         movieCard.className = "fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50";
         movieCard.innerHTML = `
