@@ -13,7 +13,7 @@ async function createCarousel(
   const containerWrapper = document.createElement("div");
   containerWrapper.className = "w-full overflow-hidden p-4 relative";
 
-  containerWrapper.innerHTML = `<h2 class="text-lg font-bold  pt-4 border-b border-b-[#313232]">${titulo}</h2>`;
+  containerWrapper.innerHTML = `<h2 class="text-lg font-bold text-neutral-100 pt-4 border-b border-b-[#313232]">${titulo}</h2>`;
 
   const moviesContainer = document.createElement("div");
   moviesContainer.className = "carrossel flex overflow-hidden space-x-4 p-4";
