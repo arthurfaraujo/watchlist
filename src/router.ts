@@ -17,7 +17,8 @@ const routes: Routes = {
 }
 
 export function render(path: string) {
-  app!.innerHTML = Header()
+  app!.innerHTML = ''
+  app!.appendChild(Header())
 
   const matchedRoute = matchRoute(path)
   if (matchedRoute) {
