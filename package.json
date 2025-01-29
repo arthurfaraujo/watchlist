@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dstart": "tsc && vite build && vite preview"
   },
   "devDependencies": {
     "@types/node": "^22.10.10",
