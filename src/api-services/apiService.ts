@@ -19,6 +19,10 @@ class ApiService {
     return this.request("search/tv", { query });
   }
 
+  async getPersonById(id: string) {
+    return this.request(`person/${id}`)
+  }
+
   /** Procura por um filme usando o id */
   async getMovieById(id: string) {
     return this.request(`movie/${id}`);
