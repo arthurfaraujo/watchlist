@@ -2,6 +2,7 @@ import Header from '@/components/Header'
 import MoviesList from '@/pages/homepage/MoviesList'
 import MyWatchlists from '@/pages/mywatchlists/MyWatchlists'
 import MyWatchlist from '@/pages/mywatchlist/[id]/MyWatchlist'
+
 import { app } from '@/main'
 
 interface Routes {
