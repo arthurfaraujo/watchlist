@@ -25,7 +25,9 @@ export function render(path: string) {
   if (matchedRoute) {
     matchedRoute
       .handler(matchedRoute.params)
-      .then((page: HTMLDivElement) => app!.appendChild(page))
+      .then((page: HTMLDivElement) => {
+        app!.appendChild(page)
+      })
   } else {
     app!.innerHTML += '<div class="w-full h-20">404</div>'
   }
