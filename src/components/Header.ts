@@ -1,4 +1,4 @@
-import SearchBar from "./searchBar"
+import SearchBar from "./SearchBar"
 
 export default function Header() {
   const header = document.createElement("nav");
