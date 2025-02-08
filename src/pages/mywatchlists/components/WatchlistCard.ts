@@ -11,8 +11,8 @@ export default function WatchlistCard(watchlist: Watchlist) {
   const card = document.createElement('div')
   card.className = 'flex w-full bg-neutral-800 p-4 gap-4 rounded items-center border border-1 border-[#303232]'
   card.innerHTML = `
-                <div class="w-16 aspect-auto cursor-pointer">
-                  <a href=${`/mywatchlist/${watchlist.id}`}><img src="https://image.tmdb.org/t/p/w500${watchlist.movies[0]?.poster_path}" /></a>
+                <div class="cursor-pointer">
+                  <a href=${`/mywatchlist/${watchlist.id}`}><img src="${watchlist.movies[0]?.poster_path ? "https://image.tmdb.org/t/p/w500"  + watchlist.movies[0]?.poster_path : "/placeholder.png"}" class="w-16 h-24 object-cover" /></a>
                 </div>
                 <div class="flex flex-col">
                     <a href=${`/mywatchlist/${watchlist.id}`}><h3 class="font-bold cursor-pointer">${formatTitle(watchlist.name, 70)}</h3></a>

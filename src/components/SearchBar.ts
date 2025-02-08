@@ -114,7 +114,7 @@ function showSearchResults(results: Result[]){
 
         const mediaHTML = document.createElement("div")
         mediaHTML.className = "cursor-pointer flex gap-2";
-        const image = item.poster_path ? "https://image.tmdb.org/t/p/w500"  + item.poster_path : "/src/assets/placeholder.png";
+        const image = item.poster_path ? "https://image.tmdb.org/t/p/w500"  + item.poster_path : "/placeholder.png";
         mediaHTML.innerHTML = `
             <img class="rounded h-16 w-12 object-cover" src="${image}">
             <p class="text-sm">${item.media_type === MediaType.movie ? item.title : item.name}</p>

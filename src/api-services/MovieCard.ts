@@ -30,7 +30,7 @@ export default async function MovieCard(titleId: string, mediaType: string) {
                 ${
                   title.poster_path
                     ? `<img class="w-72 rounded-md" src='https://image.tmdb.org/t/p/w500${title.poster_path}'>`
-                    : `<img class="w-48 h-60 object-cover rounded-md" src='/src/assets/placeholder.png'>`
+                    : `<img class="w-48 h-60 object-cover rounded-md" src='/placeholder.png'>`
                 }
                 <div class="flex flex-col">
                     <h2 class="text-2xl font-bold mb-2 pe-6">${name}</h2>
