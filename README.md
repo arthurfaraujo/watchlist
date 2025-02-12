@@ -27,18 +27,30 @@ O objetivo do webapp é possibilitar que pessoas se conectem através de watchli
 Descreva brevemente a organização do projeto. Por exemplo:
 
 ```
-/
-├── public/               # Arquivos estáticos
+watchlist/
+├── public/
+│   ├── file.svg
+│   ├── globe.svg
+│   ├── next.svg
+│   ├── vercel.svg
+│   └── window.svg
 ├── src/
-│   ├── counter.ts        # Lógica do contador
-│   ├── main.ts           # Ponto de entrada principal
-│   ├── style.css             # Estilos globais
-│   └── vite-env.d.ts         # Tipagem do ambiente do Vite
-├── .gitignore            # Arquivo de configuração do Git
-├── index.html            # Documento HTML principal
-├── package-lock.json     # Lockfile do npm
-├── package.json          # Configurações e dependências do projeto
-└── tsconfig.json         # Configuração do TypeScript
+│   └── app/
+│   │   └── favicon.ico
+│   │   └── globals.css
+│   │   └── layout.tsx
+│   │   └── page.tsx
+├── .gitignore
+├── eslint.config.mjs
+├── next.config.ts
+├── out.txt
+├── package-lock.json
+├── package.json
+├── postcss.config.mjs
+├── preview.png
+├── README.md
+├── tailwind.config.ts
+└── tsconfig.json
 ```
 
 
@@ -65,4 +77,5 @@ Seja bem-vindo para contribuir com este projeto! Siga as etapas abaixo:
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](https://opensource.org/licenses/MIT).
+
 
