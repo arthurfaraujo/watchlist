@@ -18,6 +18,6 @@ export interface MediaResponse {
   overview: string;
 }
 
-export type TMDBResponse = {
+export type SearchResponse = {
   results: MediaResponse[];
 };
