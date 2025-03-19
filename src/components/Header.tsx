@@ -35,11 +35,11 @@ export default function Header() {
               <g
                 fill="none"
                 stroke="currentColor"
-                stroke-dasharray="28"
-                stroke-dashoffset="28"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2">
+                strokeDasharray="28"
+                strokeDashoffset="28"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2">
                 <path d="M4 21v-1c0 -3.31 2.69 -6 6 -6h4c3.31 0 6 2.69 6 6v1">
                   <animate
                     fill="freeze"

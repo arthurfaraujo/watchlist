@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-
 export default function MyWachlists() {
-  return <Header />;
+  return <h1 className="text-center mt-32">hello world ^^</h1>;
 }
