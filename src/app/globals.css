@@ -19,3 +19,13 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+a {
+  font-weight: inherit;
+  color: inherit;
+  text-decoration: inherit;
+  transition: 0.3s;
+}
+a:hover {
+  color: rgba(255, 255, 255, 0.57);
+}
