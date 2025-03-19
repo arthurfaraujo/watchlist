@@ -17,3 +17,7 @@ export interface MediaResponse {
   popularity: number;
   overview: string;
 }
+
+export type TMDBResponse = {
+  results: MediaResponse[];
+};

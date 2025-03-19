@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import ApiService from "@/api-services/apiService";
 // import MovieCard from "@/components/MovieCardModal";
 import { MediaResponse, MediaType } from "@/types/media";
+import Image from "next/image";
 
 export default function SearchBar() {
   const [query, setQuery] = useState("");
@@ -107,10 +108,10 @@ function SearchResultItem({ item }: { item: MediaResponse }) {
   if (item.media_type === MediaType.person && item.profile_path) {
     return (
       <div className="flex gap-2">
-        <img
+        <Image
           className="rounded h-16"
           src={`https://image.tmdb.org/t/p/w500${item.profile_path}`}
-          alt={item.name}
+          alt={item.name!}
         />
         <p className="text-sm">{item.name}</p>
       </div>
@@ -128,14 +129,14 @@ function SearchResultItem({ item }: { item: MediaResponse }) {
       className="cursor-pointer flex gap-2"
       // onClick={() => MovieCard(item.id, item.media_type)}
     >
-      <img
+      <Image
         className="rounded h-16 w-12 object-cover"
         src={
           item.poster_path
             ? `https://image.tmdb.org/t/p/w500${item.poster_path}`
             : "/placeholder.png"
         }
-        alt={item.title || item.name}
+        alt={(item.title || item.name)!}
       />
       <p className="text-sm">
         {item.media_type === MediaType.movie ? item.title : item.name}

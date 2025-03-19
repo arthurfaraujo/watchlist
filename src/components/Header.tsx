@@ -1,10 +1,11 @@
+import Link from "next/link";
 import SearchBar from "./SearchBar";
 
 export default function Header() {
   return (
     <header className="bg-neutral-800 w-full">
       <div className="max-w-screen-xl xl:mx-auto mx-4 text-neutral-100 flex justify-between items-center p-2 ">
-        <a
+        <Link
           className="hidden sm:flex gap-2 font-bold text-xl cursor-pointer"
           href="/">
           <svg
@@ -18,13 +19,13 @@ export default function Header() {
             />
           </svg>
           <span>WatchList</span>
-        </a>
+        </Link>
         <div className="w-1/2 sm:mx-4 mx-2 relative">
           <SearchBar />
         </div>
         <ul className="text-sm font-semibold flex justify-between items-center">
           <li className="cursor-pointer whitespace-nowrap">
-            <a href="/mywatchlists">Minhas Listas</a>
+            <Link href="/mywatchlists">Minhas Listas</Link>
           </li>
           <li className="flex justify-center items-center ml-4 w-10 h-10 border rounded-full cursor-pointer">
             <svg

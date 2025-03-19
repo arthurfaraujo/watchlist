@@ -1,4 +1,5 @@
 import { MediaResponse } from "@/types/media";
+import Image from "next/image";
 
 export default function MovieCard({
   name,
@@ -7,13 +8,19 @@ export default function MovieCard({
   name: string;
   media: MediaResponse;
 }) {
+  const imagePath = media.poster_path
+    ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
+    : "/placeholder.png";
+
   return (
     <div className="flex flex-col">
       <div className="relative w-56 h-80">
-        <img
+        <Image
           id="movie-img"
-          src={"https://image.tmdb.org/t/p/w500" + media.poster_path}
+          src={imagePath}
           alt={name}
+          width={500}
+          height={500}
           className="cursor-pointer rounded-t w-full h-full object-cover"
         />
         <div className="absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-70 text-white">
