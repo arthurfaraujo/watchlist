@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import MovieModal from "@/components/MovieModal";
+import { ModalProvider } from "@/context/ModalContext";
 
 export const metadata: Metadata = {
   title: "Watchlist",
@@ -15,9 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-neutral-900">
-        <Header />
-        {children}
-        <Footer />
+        <ModalProvider>
+          <Header />
+          {children}
+          <MovieModal />
+          <Footer />
+        </ModalProvider>
       </body>
     </html>
   );

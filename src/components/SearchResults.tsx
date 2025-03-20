@@ -1,10 +1,9 @@
 import { MediaResponse } from "@/types/media";
 import Image from "next/image";
+import { useModal } from "@/context/ModalContext";
 
 export default function SearchResults({ data }: { data: MediaResponse[] }) {
-  // const sortedData = data.sort(
-  //   (a, b) => (b.vote_average || 0) - (a.vote_average || 0)
-  // );
+  const { openModal } = useModal();
 
   return (
     <>
@@ -15,17 +14,10 @@ export default function SearchResults({ data }: { data: MediaResponse[] }) {
                 media.poster_path)!}`
             : "/placeholder.png";
 
-        // if (
-        //   (media.media_type !== MediaType.person && !media.first_air_date) ||
-        //   !media.release_date
-        // ) {
-        //   return;
-        // }
-
         return (
           <div
             key={media.id}
-            onClick={() => alert("Hello world")}
+            onClick={() => openModal(media)}
             className="cursor-pointer my-2 flex gap-1">
             <Image
               src={imagePath}
@@ -37,7 +29,9 @@ export default function SearchResults({ data }: { data: MediaResponse[] }) {
             <div className="mx-1 flex justify-between w-full">
               <h1 className="text-sm">{(media.title || media.name)!}</h1>
               <p className="text-xs">
-                {media.first_air_date || media.release_date}
+                {new Date(
+                  media.release_date || media.first_air_date + "T00:00:00"
+                ).toLocaleDateString()}
               </p>
             </div>
           </div>
