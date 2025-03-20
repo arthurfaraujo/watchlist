@@ -29,28 +29,40 @@ Descreva brevemente a organização do projeto. Por exemplo:
 ```
 watchlist/
 ├── public/
-│   ├── file.svg
-│   ├── globe.svg
-│   ├── next.svg
-│   ├── vercel.svg
-│   └── window.svg
+│   ├── favicon.svg
+│   └── placeholder.png
 ├── src/
-│   └── app/
-│   │   └── favicon.ico
-│   │   └── globals.css
-│   │   └── layout.tsx
+│   ├── api-services/
+│   │   └── apiService.ts
+│   ├── app/
+│   │   ├── mywatchlists/
+│   │   │   └── page.tsx
+│   │   ├── globals.css
+│   │   ├── layout.tsx
 │   │   └── page.tsx
+│   ├── components/
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── MovieCard.tsx
+│   │   ├── MovieCarousel.tsx
+│   │   ├── MovieModal.tsx
+│   │   ├── SearchBar.tsx
+│   │   └── SearchResults.tsx
+│   ├── context/
+│   │   └── ModalContext.tsx
+│   └── types/
+│   │   └── media.ts
 ├── .gitignore
+├── README.md
 ├── eslint.config.mjs
 ├── next.config.ts
-├── out.txt
 ├── package-lock.json
 ├── package.json
 ├── postcss.config.mjs
 ├── preview.png
-├── README.md
 ├── tailwind.config.ts
 └── tsconfig.json
+
 ```
 
 
