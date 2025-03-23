@@ -1,8 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import SearchBar from "./SearchBar";
 import { VscAccount } from "react-icons/vsc";
+import { useAuth } from "@/context/AuthContext";
+import LogoutButton from "./LogoutButton";
 
 export default function Header() {
+  const { user } = useAuth();
+
   return (
     <header className="bg-neutral-800 w-full">
       <div className="max-w-screen-xl xl:mx-auto mx-4 text-neutral-100 flex justify-between items-center p-2 ">
@@ -28,11 +34,20 @@ export default function Header() {
           <li className="cursor-pointer whitespace-nowrap">
             <Link href="/mywatchlists">Minhas Listas</Link>
           </li>
-          <li className="flex justify-center items-center ml-4 w-10 h-10 cursor-pointer">
-            <Link href="/">
-              <VscAccount className="text-4xl" />
-            </Link>
-          </li>
+          {user ? (
+            <li className="flex items-center gap-3 ml-4">
+              <span className="text-xs text-gray-300 hidden sm:inline">
+                {user.email}
+              </span>
+              <LogoutButton />
+            </li>
+          ) : (
+            <li className="flex justify-center items-center ml-4 w-10 h-10 cursor-pointer">
+              <Link href="/auth/login">
+                <VscAccount className="text-4xl" />
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </header>
