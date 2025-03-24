@@ -58,7 +58,9 @@ export default function MovieCard({
       </div>
       {!watchlistCard && <button
         onClick={() => {
-          if (user?.id) setWatchlistMarked(is => !is)
+          if (user?.id) {
+            addMovieToWatchlist().then(() => setWatchlistMarked(marked => !marked))
+          }
         }}
         className={`${
           watchlistMarked

@@ -14,7 +14,7 @@ export default function MovieCarousel({
 }: Readonly<{
   carouselTitle: string;
   mediaResponses: MediaResponse[];
-}) {
+}>) {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]); // Referência para cada MovieCard
   const [index, setIndex] = useState<number>(0);
