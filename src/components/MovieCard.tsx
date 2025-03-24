@@ -1,23 +1,35 @@
+// oi meu nome é arthur e eu vou apresentar aqui a parta das watchlists (por favor acerta... ;-;)
+
+'use client'
+
 import { MediaResponse } from "@/types/media";
 import Image from "next/image";
 import { useModal } from "@/context/ModalContext";
 import { MdStar } from "react-icons/md";
 import { useState } from "react";
+import { useAuth } from "@/context/AuthContext";
+import storage from "@/services/databaseService"
 
 export default function MovieCard({
   name,
   media,
-}: {
+  watchlistCard = false
+}: Readonly<{
   name: string;
   media: MediaResponse;
-}) {
+  watchlistCard: boolean;
+}>) {
   const { openModal } = useModal();
-  const [watchlistMarked, setWatchlistMarket] = useState(false);
-
+  const [watchlistMarked, setWatchlistMarked] = useState(false);
+  const { user } = useAuth()
   const imagePath = media.poster_path
     ? `https://image.tmdb.org/t/p/w500${media.poster_path}`
     : "/placeholder.png";
 
+  async function addMovieToWatchlist() {
+    await storage.create({id: media.id, type: media.media_type, watchlistId: user!.id }, 'media')
+  }
+  
   return (
     <>
       <div className="flex flex-col">
@@ -49,13 +61,17 @@ export default function MovieCard({
             </div>
           </div>
         </div>
-        <button
-          onClick={() => setWatchlistMarket(!watchlistMarked)}
+        {!watchlistCard && <button
+          onClick={() => {
+            if (user?.id) {
+              addMovieToWatchlist().then(() => setWatchlistMarked(!watchlistMarked))
+            }
+          }}
           className={`${
             watchlistMarked ? "bg-green-600" : "bg-blue-700"
           } text-neutral-100 text-sm p-2 rounded-b w-full`}>
           Watchlist +
-        </button>
+        </button>}
       </div>
     </>
   );

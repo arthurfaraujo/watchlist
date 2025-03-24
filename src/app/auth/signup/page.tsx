@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
+import storage from '@/services/databaseService'
 
 // Função para validar a senha usando regex
 function validatePassword(password: string): { isValid: boolean; message: string } {
@@ -75,7 +76,7 @@ export default function Signup() {
       return;
     }
     
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
@@ -83,6 +84,7 @@ export default function Signup() {
     if (error) {
       setMessage(`Erro: ${error.message}`);
     } else {
+      storage.create({userId: data.user!.id})
       setMessage("Cadastro realizado!");
       router.push("/");
     }

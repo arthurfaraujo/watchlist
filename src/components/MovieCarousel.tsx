@@ -6,10 +6,10 @@ import MovieCard from "./MovieCard";
 export default function MovieCarousel({
   carouselTitle,
   mediaResponses,
-}: {
+}: Readonly<{
   carouselTitle: string;
   mediaResponses: MediaResponse[];
-}) {
+}>) {
   return (
     <div>
       <h1 className="border-b border-neutral-700 text-lg font-bold mb-3">

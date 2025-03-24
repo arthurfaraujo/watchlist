@@ -32,7 +32,7 @@ export default function Header() {
         </div>
         <ul className="text-sm font-semibold flex justify-between items-center">
           <li className="cursor-pointer whitespace-nowrap">
-            <Link href="/mywatchlists">Minhas Listas</Link>
+            <Link href="/mywatchlist">Minha Lista</Link>
           </li>
           {user ? (
             <li className="flex items-center gap-3 ml-4">
