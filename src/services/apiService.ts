@@ -1,5 +1,5 @@
 import axios from "axios";
-import { MediaResponse, SearchResponse } from "@/types/media";
+import { MediaResponse, MediaType, SearchResponse } from "@/types/media";
 
 class ApiService {
   private static readonly apiKey = process.env.NEXT_PUBLIC_TMDB_API_KEY!;
@@ -12,17 +12,47 @@ class ApiService {
 
   /** Procura por filmes */
   static async searchMovies(query: string): Promise<SearchResponse> {
-    return this.request("search/movie", { query }) as Promise<SearchResponse>;
-  }
+    return this.request("search/movie", { query }).then((response) => {
+      const searchResponse = response as SearchResponse;
 
-  /** Procura por pessoas */
-  static async searchPeople(query: string): Promise<SearchResponse> {
-    return this.request("search/person", { query }) as Promise<SearchResponse>;
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.movie,
+        })),
+      };
+    });
   }
 
   /** Procura por series */
   static async searchTvShows(query: string): Promise<SearchResponse> {
-    return this.request("search/tv", { query }) as Promise<SearchResponse>;
+    return this.request("search/tv", { query }).then((response) => {
+      const searchResponse = response as SearchResponse;
+
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.series,
+        })),
+      };
+    });
+  }
+
+  /** Procura por pessoas */
+  static async searchPeople(query: string): Promise<SearchResponse> {
+    return this.request("search/person", { query }).then((response) => {
+      const searchResponse = response as SearchResponse;
+
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.person,
+        })),
+      };
+    });
   }
 
   static async getPersonById(id: string): Promise<MediaResponse> {
@@ -46,24 +76,64 @@ class ApiService {
 
   /** Pega filmes que estão em alta no momento */
   static async getTrendingMovies(): Promise<SearchResponse> {
-    return this.request("trending/movie/week") as Promise<SearchResponse>;
+    return this.request("trending/movie/week").then((response) => {
+      const searchResponse = response as SearchResponse;
+
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.movie,
+        })),
+      };
+    });
   }
 
   /** Pega series que estão em alta no momento */
   static async getTrendingTvShows(): Promise<SearchResponse> {
-    return this.request("trending/tv/week") as Promise<SearchResponse>;
+    return this.request("trending/tv/week").then((response) => {
+      const searchResponse = response as SearchResponse;
+
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.series,
+        })),
+      };
+    });
   }
 
   static async getMoviesByCategory(category: string): Promise<SearchResponse> {
     return this.request("discover/movie", {
       with_genres: category,
-    }) as Promise<SearchResponse>;
+    }).then((response) => {
+      const searchResponse = response as SearchResponse;
+
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.movie,
+        })),
+      };
+    });
   }
 
   static async getTvByCategory(category: string): Promise<SearchResponse> {
     return this.request("discover/tv", {
       with_genres: category,
-    }) as Promise<SearchResponse>;
+    }).then((response) => {
+      const searchResponse = response as SearchResponse;
+
+      return {
+        ...searchResponse,
+        results: searchResponse.results.map((movie) => ({
+          ...movie,
+          media_type: MediaType.series,
+        })),
+      };
+    });
   }
 
   private static async request(

@@ -24,11 +24,13 @@ export default function SearchResults({ data }: { data: MediaResponse[] }) {
               alt={(media.title || media.name)!}
               width={500}
               height={500}
-              className="shrink-0 rounded w-12 h-16 cursor-pointer rounded-t object-cover"
+              className="shrink-0 rounded w-8 h-12 sm:w-12 sm:h-16 cursor-pointer rounded-t object-cover"
             />
-            <div className="mx-1 flex justify-between w-full">
-              <h1 className="text-sm">{(media.title || media.name)!}</h1>
-              <p className="text-xs">
+            <div className="mx-1 flex gap-2 justify-between w-full">
+              <h1 className="text-xs md:text-sm">
+                {(media.title || media.name)!}
+              </h1>
+              <p className="text-xs font-normal md:font-bold">
                 {new Date(
                   media.release_date || media.first_air_date + "T00:00:00"
                 ).toLocaleDateString()}

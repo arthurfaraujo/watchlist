@@ -1,5 +1,3 @@
-// oi meu nome é arthur e eu vou apresentar aqui a parta das watchlists (por favor acerta... ;-;)
-
 'use client'
 
 import { MediaResponse } from "@/types/media";
@@ -31,48 +29,45 @@ export default function MovieCard({
   }
   
   return (
-    <>
-      <div className="flex flex-col">
-        <div
-          onClick={() => openModal(media)}
-          className="cursor-pointer relative w-56 h-80">
-          <Image
-            id="movie-img"
-            src={imagePath}
-            alt={name}
-            width={500}
-            height={500}
-            className="cursor-pointer rounded-t w-full h-full object-cover"
-          />
-          <div className="absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-70 text-white">
-            <h3 className="text-sm font-bold">{name}</h3>
-            <div className="text-xs flex items-center justify-between">
-              <p>
-                {new Date(
-                  media.release_date || media.first_air_date + "T00:00:00"
-                ).toLocaleDateString()}
+    <div className="flex flex-col w-24 sm:w-40 lg:w-56">
+      <div onClick={() => openModal(media)} className="cursor-pointer relative">
+        <Image
+          id="movie-img"
+          src={imagePath}
+          alt={name}
+          width={500}
+          height={500}
+          className="cursor-pointer rounded-t w-full h-36 sm:h-56 lg:h-80 object-cover"
+        />
+        <div className="hidden sm:block absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-70 text-white">
+          <h3 className="text-sm font-bold">{name}</h3>
+          <div className="text-xs flex items-center justify-between">
+            <p>
+              {new Date(
+                media.release_date || media.first_air_date + "T00:00:00"
+              ).toLocaleDateString()}
+            </p>
+            {media.vote_average! > 0 && (
+              <p className="flex gap-1 items-center">
+                <MdStar className="text-yellow-400 text-sm" />
+                <span>{Number(media.vote_average).toFixed(1)}</span>
               </p>
-              {media.vote_average! > 0 && (
-                <p className="flex gap-1 items-center">
-                  <MdStar className="text-yellow-400 text-sm" />
-                  <span>{Number(media.vote_average).toFixed(1)}</span>
-                </p>
-              )}
-            </div>
+            )}
           </div>
         </div>
-        {!watchlistCard && <button
-          onClick={() => {
-            if (user?.id) {
-              addMovieToWatchlist().then(() => setWatchlistMarked(!watchlistMarked))
-            }
-          }}
-          className={`${
-            watchlistMarked ? "bg-green-600" : "bg-blue-700"
-          } text-neutral-100 text-sm p-2 rounded-b w-full`}>
-          Watchlist +
-        </button>}
       </div>
-    </>
+      {!watchlistCard && <button
+        onClick={() => {
+          if (user?.id) setWatchlistMarked(is => !is)
+        }}
+        className={`${
+          watchlistMarked
+            ? "hover:bg-green-500 bg-green-600"
+            : "hover:bg-blue-600 bg-blue-700"
+        } text-neutral-100  text-sm p-2 rounded-b w-full`}>
+        Watchlist +
+      </button>}
+      
+    </div>
   );
 }

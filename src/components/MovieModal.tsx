@@ -18,14 +18,14 @@ export default function MovieModal() {
       className="animate-slideUp fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
       onClick={closeModal}>
       <div
-        className="h-96 flex gap-4 border border-neutral-700 bg-opacity-90 backdrop-blur-sm bg-neutral-800 p-4 pr-10 rounded-lg mx-4 max-w-screen-sm"
+        className="h-80 sm:h-96 flex gap-4 border border-neutral-700 bg-opacity-90 backdrop-blur-sm bg-neutral-900 p-4 pr-10 rounded-lg mx-4 max-w-screen-sm"
         onClick={(e) => e.stopPropagation()}>
         <MdClose
-          className="text-xl absolute end-4 cursor-pointer text-neutral-300 hover:text-neutral-50 duration-100 hover:scale-110"
+          className="hover:scale-110 hover:bg-red-600 rounded hover:bg-opacity-50 text-xl absolute end-4 cursor-pointer text-neutral-300 hover:text-neutral-50"
           onClick={closeModal}
         />
         <Image
-          className="rounded w-64 h-full object-cover"
+          className="rounded hidden sm:block w-64 h-full sm:h-full object-cover"
           src={imagePath}
           width={500}
           height={500}
