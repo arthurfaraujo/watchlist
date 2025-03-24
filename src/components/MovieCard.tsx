@@ -49,8 +49,10 @@ export default function MovieCard({
       <button
         onClick={() => setWatchlistMarket(!watchlistMarked)}
         className={`${
-          watchlistMarked ? "bg-green-600" : "bg-blue-700"
-        } text-neutral-100 text-sm p-2 rounded-b w-full`}>
+          watchlistMarked
+            ? "hover:bg-green-500 bg-green-600"
+            : "hover:bg-blue-600 bg-blue-700"
+        } text-neutral-100  text-sm p-2 rounded-b w-full`}>
         Watchlist +
       </button>
     </div>
