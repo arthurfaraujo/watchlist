@@ -19,19 +19,17 @@ export default function MovieCard({
     : "/placeholder.png";
 
   return (
-    <div className="flex flex-col">
-      <div
-        onClick={() => openModal(media)}
-        className="cursor-pointer relative w-56 h-80">
+    <div className="flex flex-col w-24 sm:w-40 lg:w-56">
+      <div onClick={() => openModal(media)} className="cursor-pointer relative">
         <Image
           id="movie-img"
           src={imagePath}
           alt={name}
           width={500}
           height={500}
-          className="cursor-pointer rounded-t w-full h-full object-cover"
+          className="cursor-pointer rounded-t w-full h-36 sm:h-56 lg:h-80 object-cover"
         />
-        <div className="absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-70 text-white">
+        <div className="hidden sm:block absolute bottom-0 left-0 right-0 p-2 bg-black bg-opacity-70 text-white">
           <h3 className="text-sm font-bold">{name}</h3>
           <div className="text-xs flex items-center justify-between">
             <p>

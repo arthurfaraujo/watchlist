@@ -3,7 +3,7 @@ import MovieCarousel from "@/components/MovieCarousel";
 
 export default async function Home() {
   return (
-    <main className="max-w-screen-xl mx-auto mt-8 flex flex-col gap-12">
+    <main className="max-w-screen-xl xl:mx-auto mx-8 mt-8 flex flex-col gap-12">
       <MovieCarousel
         carouselTitle="Em Alta"
         mediaResponses={(await ApiService.getTrendingAll()).results}
