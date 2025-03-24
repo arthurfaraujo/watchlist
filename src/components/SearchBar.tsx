@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import ApiService from "@/api-services/apiService";
+import ApiService from "@/services/apiService";
 import { MediaResponse, SearchResponse } from "@/types/media";
 import SearchResults from "./SearchResults";
 

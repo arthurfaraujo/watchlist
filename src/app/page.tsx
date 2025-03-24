@@ -1,5 +1,5 @@
-import ApiService from "@/api-services/apiService";
-import MovieCarousel from "@/components/MovieCarousel";
+import ApiService from '@/services/apiService'
+import MovieCarousel from '@/components/MovieCarousel'
 
 export default async function Home() {
   return (
@@ -18,16 +18,16 @@ export default async function Home() {
       />
       <MovieCarousel
         carouselTitle="Filmes de comédia"
-        mediaResponses={(await ApiService.getMoviesByCategory("35")).results}
+        mediaResponses={(await ApiService.getMoviesByCategory('35')).results}
       />
       <MovieCarousel
         carouselTitle="Filmes de Terror"
-        mediaResponses={(await ApiService.getMoviesByCategory("27")).results}
+        mediaResponses={(await ApiService.getMoviesByCategory('27')).results}
       />
       <MovieCarousel
         carouselTitle="Séries de Drama"
-        mediaResponses={(await ApiService.getMoviesByCategory("18")).results}
+        mediaResponses={(await ApiService.getMoviesByCategory('18')).results}
       />
     </main>
-  );
+  )
 }

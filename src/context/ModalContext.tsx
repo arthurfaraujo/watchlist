@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useMemo } from "react";
 import { MediaResponse } from "@/types/media";
 
 type ModalContextType = {
@@ -11,14 +11,16 @@ type ModalContextType = {
 
 const ModalContext = createContext<ModalContextType | undefined>(undefined);
 
-export function ModalProvider({ children }: { children: ReactNode }) {
+export function ModalProvider({ children }: Readonly<{ children: ReactNode }>) {
   const [media, setMedia] = useState<MediaResponse | null>(null);
 
   const openModal = (media: MediaResponse) => setMedia(media);
   const closeModal = () => setMedia(null);
 
+  const contextValue = useMemo(() => ({ media, openModal, closeModal }), [media]);
+
   return (
-    <ModalContext.Provider value={{ media, openModal, closeModal }}>
+    <ModalContext.Provider value={contextValue}>
       {children}
     </ModalContext.Provider>
   );
