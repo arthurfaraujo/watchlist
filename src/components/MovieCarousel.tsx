@@ -18,9 +18,6 @@ export default function MovieCarousel({
       <div className="pb-6 overflow-scroll">
         <div className="flex gap-4">
           {mediaResponses.map((media) => {
-            if (media.id === "1235619") {
-              console.log(media);
-            }
             if (!media.poster_path) return;
 
             return (
