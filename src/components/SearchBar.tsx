@@ -51,7 +51,7 @@ export default function SearchBar({
     if (!modalOpen && inputRef.current && showSearch) {
       inputRef.current.focus();
     }
-  }, [modalOpen]);
+  }, [modalOpen, showSearch]);
 
   return (
     <div className={className}>

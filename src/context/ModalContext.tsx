@@ -25,7 +25,7 @@ export function ModalProvider({ children }: Readonly<{ children: ReactNode }>) {
     setModalOpen(false);
   };
 
-  const contextValue = useMemo(() => ({ media, modalOpen, openModal, closeModal }), [media]);
+  const contextValue = useMemo(() => ({ media, modalOpen, openModal, closeModal }), [modalOpen, media]);
 
   return (
     <ModalContext.Provider value={contextValue}>

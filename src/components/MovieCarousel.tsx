@@ -39,7 +39,7 @@ export default function MovieCarousel({
   const handleScrollLeft = () => {
     setIndex((prevIndex) => {
       const visibleCount = getVisibleCount();
-      let newIndex =
+      const newIndex =
         (prevIndex - visibleCount + mediaResponses.length) %
         mediaResponses.length;
 
@@ -51,7 +51,7 @@ export default function MovieCarousel({
   const handleScrollRight = () => {
     setIndex((prevIndex) => {
       const visibleCount = getVisibleCount();
-      let newIndex = (prevIndex + visibleCount) % mediaResponses.length;
+      const newIndex = (prevIndex + visibleCount) % mediaResponses.length;
 
       scrollToElement(newIndex);
       return newIndex;
@@ -61,7 +61,7 @@ export default function MovieCarousel({
   useEffect(() => {
     console.log(index);
     console.log(mediaResponses.length);
-  }, [index]);
+  }, [index, mediaResponses.length]);
 
   return (
     <div>

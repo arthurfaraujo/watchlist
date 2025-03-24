@@ -11,11 +11,11 @@ import storage from "@/services/databaseService"
 export default function MovieCard({
   name,
   media,
-  watchlistCard = false
+  watchlistCard
 }: Readonly<{
   name: string;
   media: MediaResponse;
-  watchlistCard: boolean;
+  watchlistCard?: boolean;
 }>) {
   const { openModal } = useModal();
   const [watchlistMarked, setWatchlistMarked] = useState(false);
