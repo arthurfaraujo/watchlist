@@ -5,18 +5,73 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { supabase } from "@/lib/supabaseClient";
 
+// Função para validar a senha usando regex
+function validatePassword(password: string): { isValid: boolean; message: string } {
+  // Comprimento mínimo de 8 caracteres
+  if (password.length < 8) {
+    return { isValid: false, message: "A senha deve ter pelo menos 8 caracteres" };
+  }
+
+  // Deve conter pelo menos uma letra maiúscula
+  if (!/[A-Z]/.test(password)) {
+    return { isValid: false, message: "A senha deve conter pelo menos uma letra maiúscula" };
+  }
+
+  // Deve conter pelo menos uma letra minúscula
+  if (!/[a-z]/.test(password)) {
+    return { isValid: false, message: "A senha deve conter pelo menos uma letra minúscula" };
+  }
+
+  // Deve conter pelo menos um número
+  if (!/\d/.test(password)) {
+    return { isValid: false, message: "A senha deve conter pelo menos um número" };
+  }
+
+  // Deve conter pelo menos um caractere especial
+  if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+    return { isValid: false, message: "A senha deve conter pelo menos um caractere especial" };
+  }
+
+  return { isValid: true, message: "" };
+}
+
 export default function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const router = useRouter();
+
+  // Validação em tempo real quando o campo de senha muda
+  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newPassword = e.target.value;
+    setPassword(newPassword);
+    
+    // Limpa mensagem de erro se o campo estiver vazio
+    if (!newPassword) {
+      setPasswordError("");
+      return;
+    }
+    
+    // Valida a senha
+    const validation = validatePassword(newPassword);
+    setPasswordError(validation.isValid ? "" : validation.message);
+  };
 
   async function handleSignup(e: React.FormEvent) {
     e.preventDefault();
     
+    // Verifica se as senhas coincidem
     if (password !== confirmPassword) {
       setMessage("As senhas não coincidem");
+      return;
+    }
+    
+    // Valida a senha antes de enviar
+    const validation = validatePassword(password);
+    if (!validation.isValid) {
+      setMessage(validation.message);
       return;
     }
     
@@ -28,9 +83,8 @@ export default function Signup() {
     if (error) {
       setMessage(`Erro: ${error.message}`);
     } else {
-      setMessage("Cadastro realizado! Verifique seu email para confirmação.");
-      // Você pode redirecionar diretamente ou esperar confirmação de email
-      // router.push("/auth/login");
+      setMessage("Cadastro realizado!");
+      router.push("/");
     }
   }
 
@@ -51,14 +105,17 @@ export default function Signup() {
           required
         />
         
-        <input
-          type="password"
-          placeholder="Senha"
-          className="p-2 rounded bg-neutral-700 text-white"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
+        <div>
+          <input
+            type="password"
+            placeholder="Senha"
+            className={`p-2 rounded bg-neutral-700 text-white w-full ${passwordError ? 'border border-red-500' : ''}`}
+            value={password}
+            onChange={handlePasswordChange}
+            required
+          />
+          {passwordError && <p className="text-sm text-red-400 mt-1">{passwordError}</p>}
+        </div>
         
         <input
           type="password"
@@ -69,7 +126,10 @@ export default function Signup() {
           required
         />
         
-        <button type="submit" className="bg-blue-600 text-white p-2 rounded">
+        <button 
+          type="submit" 
+          className="bg-blue-600 text-white p-2 rounded hover:bg-blue-700 transition"
+        >
           Cadastrar
         </button>
         
